@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class playerBehavior : MonoBehaviour {
 
-	private float speed;
+	public float speed;
 	private float xAxis; // move right when 1 move left when -1
 	private float yAxis; // move up when 1 move down when -1
 	private Vector2 pointOfCollision; // point the player collides with a wall so enemy can follow this point
 	public Rigidbody2D rb;
+	private Vector2 startPosition;
 
 	// Use this for initialization
 	void Start () {
-
+		
+		startPosition = new Vector2(-8.16f,-4.39f);
 		speed = 4;
 		rb = this.GetComponent<Rigidbody2D> ();
 		rb.bodyType = RigidbodyType2D.Dynamic; 
@@ -34,6 +36,10 @@ public class playerBehavior : MonoBehaviour {
 			Debug.Log ("collided with wall");
 			pointOfCollision = rb.transform.position;
 		}
+	}
+
+	void OnBecameInvisible(){
+		rb.position = startPosition;
 	}
 
 }
