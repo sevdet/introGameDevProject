@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class playerBehavior : MonoBehaviour {
 
@@ -15,7 +16,7 @@ public class playerBehavior : MonoBehaviour {
 	void Start () {
 		
 		startPosition = new Vector2(-8.16f,-4.39f);
-		speed = 4;
+		speed = 3;
 		rb = this.GetComponent<Rigidbody2D> ();
 		rb.bodyType = RigidbodyType2D.Dynamic; 
 		rb.gravityScale = 0; // want collision but top down so no gravity
@@ -28,18 +29,27 @@ public class playerBehavior : MonoBehaviour {
 		yAxis = Input.GetAxis ("Vertical"); // handle direction for W/S/up/down key presses 
 
 		transform.Translate (new Vector2 (xAxis, yAxis) * Time.deltaTime * speed); 
+
+		if (Input.GetKeyDown (KeyCode.Space)) {
+			rb.position = startPosition;
+		}
 	}
 		
 
 	void OnCollisionEnter2D(Collision2D coll) {
 		if (coll.gameObject.tag == "wall") {
-			Debug.Log ("collided with wall");
+			Debug.Log ("collided with wall at " + rb.transform.position);
 			pointOfCollision = rb.transform.position;
+		}
+
+		if (coll.gameObject.tag == "goal") {
+			Debug.Log ("won?");
+			SceneManager.LoadScene ("winScene");
 		}
 	}
 
 	void OnBecameInvisible(){
 		rb.position = startPosition;
 	}
-
+		
 }
