@@ -30,9 +30,6 @@ public class playerBehavior : MonoBehaviour {
 
 		transform.Translate (new Vector2 (xAxis, yAxis) * Time.deltaTime * speed); 
 
-		if (Input.GetKeyDown (KeyCode.Space)) {
-			rb.position = startPosition;
-		}
 	}
 		
 
@@ -43,8 +40,13 @@ public class playerBehavior : MonoBehaviour {
 		}
 
 		if (coll.gameObject.tag == "goal") {
-			Debug.Log ("won?");
+			Debug.Log ("won");
 			SceneManager.LoadScene ("winScene");
+		}
+
+		if (coll.gameObject.tag == "enemy") {
+			Debug.Log ("lost");
+			SceneManager.LoadScene ("loseScene");
 		}
 	}
 

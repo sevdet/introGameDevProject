@@ -5,7 +5,7 @@ using UnityEngine;
 public class enemyBehavior : MonoBehaviour {
 
 	public Transform target;//set target from inspector instead of looking in Update
-	public float speed = 6;
+	public float speed = 4;
 
 	// Use this for initialization
 	void Start () {
