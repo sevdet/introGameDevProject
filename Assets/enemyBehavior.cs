@@ -5,11 +5,11 @@ using UnityEngine;
 public class enemyBehavior : MonoBehaviour {
 
 	public Transform target;//set target from inspector instead of looking in Update
-	public float speed = 4;
+	public float speed;
 
 	// Use this for initialization
 	void Start () {
-		
+		speed = 0.6f;
 	}
 	
 	// Update is called once per frame
