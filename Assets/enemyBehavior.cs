@@ -20,9 +20,8 @@ public class enemyBehavior : MonoBehaviour {
 		transform.LookAt(target.position);
 		transform.Rotate(new Vector3(0,-90,0),Space.Self);
 
-		// translating enemy towards position of player FOR NOW
-		// going to eventually make the target be the player's last point of collision w the wall
-		if (Vector3.Distance(transform.position,target.position) > 0.8f){
+		// translating enemy towards position of player
+		if (Vector3.Distance(transform.position,target.position) > 0.4f){
 			transform.Translate(new Vector3(speed* Time.deltaTime,0,0) );
 		}
 	}
@@ -39,8 +38,8 @@ public class enemyBehavior : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D coll) {
 		if (coll.gameObject.tag == "powerup") {
 			Debug.Log ("enemy got powerup");
-			coll.transform.Translate(new Vector2(100,100));
-			speed += 0.2f;
+			Destroy (coll.gameObject);
+			speed += 0.3f;
 			transform.localScale = Vector2.Lerp (transform.localScale, new Vector2 (0.4f, 0.4f), Time.deltaTime);
 		}
 	}

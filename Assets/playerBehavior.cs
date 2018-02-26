@@ -11,10 +11,12 @@ public class playerBehavior : MonoBehaviour {
 	private Vector2 pointOfCollision; // point the player collides with a wall so enemy can follow this point
 	public Rigidbody2D rb;
 	private Vector2 startPosition;
+	private int goalCount; // number of sparklies the player collects, win when 5 are collected
 
 	// Use this for initialization
 	void Start () {
-		
+
+		goalCount = 0;
 		startPosition = new Vector2(-8.16f,-4.39f);
 		speed = 3;
 		rb = this.GetComponent<Rigidbody2D> ();
@@ -30,6 +32,11 @@ public class playerBehavior : MonoBehaviour {
 
 		transform.Translate (new Vector2 (xAxis, yAxis) * Time.deltaTime * speed); 
 
+		if (goalCount == 5) {
+			Debug.Log ("won");
+			SceneManager.LoadScene ("winScene");
+		}
+
 	}
 		
 
@@ -40,8 +47,9 @@ public class playerBehavior : MonoBehaviour {
 		}
 
 		if (coll.gameObject.tag == "goal") {
-			Debug.Log ("won");
-			SceneManager.LoadScene ("winScene");
+			Destroy (coll.gameObject);
+			Debug.Log ("collected a sparkly");
+			goalCount += 1;
 		}
 
 		if (coll.gameObject.tag == "enemy") {
