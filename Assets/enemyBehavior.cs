@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor.SceneManagement;
 
 public class enemyBehavior : MonoBehaviour {
 
@@ -23,6 +24,24 @@ public class enemyBehavior : MonoBehaviour {
 		// going to eventually make the target be the player's last point of collision w the wall
 		if (Vector3.Distance(transform.position,target.position) > 0.8f){
 			transform.Translate(new Vector3(speed* Time.deltaTime,0,0) );
+		}
+	}
+
+	void OnCollisionEnter2D(Collision2D coll) {
+
+		if (coll.gameObject.tag == "player") {
+			Debug.Log ("lost");
+			EditorSceneManager.LoadScene ("loseScene");
+		}
+			
+	}
+
+	void OnTriggerEnter2D(Collider2D coll) {
+		if (coll.gameObject.tag == "powerup") {
+			Debug.Log ("enemy got powerup");
+			coll.transform.Translate(new Vector2(100,100));
+			speed += 0.2f;
+			transform.localScale = Vector2.Lerp (transform.localScale, new Vector2 (0.4f, 0.4f), Time.deltaTime);
 		}
 	}
 
