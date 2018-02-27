@@ -20,11 +20,11 @@ public class sceneChanger : MonoBehaviour {
 
 		if (EditorSceneManager.GetActiveScene ().name == "titleScene") {
 			if (Input.anyKeyDown) {
-				EditorSceneManager.LoadScene ("mainScene");
+				EditorSceneManager.LoadScene ("maze1");
 			}
 		}
 
-		if (EditorSceneManager.GetActiveScene ().name == "mainScene") {
+		if (EditorSceneManager.GetActiveScene ().name == "maze1") {
 			if (Input.GetKeyDown (KeyCode.Space)) {
 				EditorSceneManager.LoadScene (EditorSceneManager.GetActiveScene ().name);
 			}

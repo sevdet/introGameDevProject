@@ -57,9 +57,4 @@ public class playerBehavior : MonoBehaviour {
 			SceneManager.LoadScene ("loseScene");
 		}
 	}
-
-	void OnBecameInvisible(){
-		rb.position = startPosition;
-	}
-		
 }
