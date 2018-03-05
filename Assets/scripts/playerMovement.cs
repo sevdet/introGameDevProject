@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class multiplayerBehavior : MonoBehaviour {
+public class playerMovement : MonoBehaviour {
 
 	public float speed;
 	private float xAxis; // move right when 1 move left when -1
@@ -27,42 +27,26 @@ public class multiplayerBehavior : MonoBehaviour {
 	void Update () {
 		
 		if (isWASDPlayer) {
-			xAxis = Input.GetAxis ("Horizontal"); // handle direction for A/D/left/right key presses
-			yAxis = Input.GetAxis ("Vertical"); // handle direction for W/S/up/down key presses 
+			xAxis = Input.GetAxis ("Horizontal"); // handle direction for A/D key presses for player 1
+			yAxis = Input.GetAxis ("Vertical"); // handle direction for W/S key presses for player 1
 
 			transform.Translate (new Vector2 (xAxis, yAxis) * Time.deltaTime * speed);
 		}
 		else {
-			xAxis = Input.GetAxis ("Horizontal2"); // handle direction for A/D/left/right key presses
-			yAxis = Input.GetAxis ("Vertical2"); // handle direction for W/S/up/down key presses 
+			xAxis = Input.GetAxis ("Horizontal2"); // handle direction for left/right key presses for player 2
+			yAxis = Input.GetAxis ("Vertical2"); // handle direction for up/down key presses for player 2
 
 			transform.Translate (new Vector2 (xAxis, yAxis) * Time.deltaTime * speed);
 		}
-
-		/*
-		if (goalCount == 5) {
-			Debug.Log ("won");
-			SceneManager.LoadScene ("winScene");
-		}
-		*/
 
 	}
 
 
 	void OnCollisionEnter2D(Collision2D coll) {
 
-		/*
-		if (coll.gameObject.tag == "goal") {
-			Destroy (coll.gameObject);
-			Debug.Log ("collected a sparkly");
-			goalCount += 1;
-		}
-		*/
-
 		if (coll.gameObject.tag == "enemy") {
 			Destroy (this.gameObject);
 			Debug.Log ("lost");
-			//SceneManager.LoadScene ("loseScene");
 		}
 	}
 }
