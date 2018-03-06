@@ -10,7 +10,6 @@ public class enemyBehavior : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		speed = 0.6f;
 	}
 	
 	// Update is called once per frame

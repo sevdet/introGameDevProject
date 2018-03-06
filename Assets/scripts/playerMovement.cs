@@ -26,27 +26,11 @@ public class playerMovement : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		
-		if (isWASDPlayer) {
-			xAxis = Input.GetAxis ("Horizontal"); // handle direction for A/D key presses for player 1
-			yAxis = Input.GetAxis ("Vertical"); // handle direction for W/S key presses for player 1
+		xAxis = Input.GetAxis ("Horizontal"); // handle direction for A/D/left/right key presses
+		yAxis = Input.GetAxis ("Vertical"); // handle direction for W/S/up/down key presses 
 
-			transform.Translate (new Vector2 (xAxis, yAxis) * Time.deltaTime * speed);
-		}
-		else {
-			xAxis = Input.GetAxis ("Horizontal2"); // handle direction for left/right key presses for player 2
-			yAxis = Input.GetAxis ("Vertical2"); // handle direction for up/down key presses for player 2
-
-			transform.Translate (new Vector2 (xAxis, yAxis) * Time.deltaTime * speed);
-		}
+		transform.Translate (new Vector2 (xAxis, yAxis) * Time.deltaTime * speed); 
 
 	}
-
-
-	void OnCollisionEnter2D(Collision2D coll) {
-
-		if (coll.gameObject.tag == "enemy") {
-			Destroy (this.gameObject);
-			Debug.Log ("lost");
-		}
-	}
+		
 }
