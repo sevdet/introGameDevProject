@@ -12,6 +12,7 @@ public class playerBehavior : MonoBehaviour {
 	public Rigidbody2D rb;
 	private Vector2 startPosition;
 	private int goalCount; // number of sparklies the player collects, win when 5 are collected
+	public Animator animationController;
 
 	// Use this for initialization
 	void Start () {
@@ -27,6 +28,9 @@ public class playerBehavior : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
+		animationController.Play ("player_idle");
+
 		xAxis = Input.GetAxis ("Horizontal"); // handle direction for A/D/left/right key presses
 		yAxis = Input.GetAxis ("Vertical"); // handle direction for W/S/up/down key presses 
 
