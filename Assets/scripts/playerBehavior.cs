@@ -14,9 +14,10 @@ public class playerBehavior : MonoBehaviour {
 	private int goalCount; // number of sparklies the player collects, win when 5 are collected
 	public Animator animationController;
 
+
 	// Use this for initialization
 	void Start () {
-
+		
 		goalCount = 0;
 		startPosition = new Vector2(-8.16f,-4.39f);
 		speed = 3;

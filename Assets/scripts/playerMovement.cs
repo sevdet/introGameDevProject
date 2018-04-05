@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEditor.Audio;
 
 public class playerMovement : MonoBehaviour {
 
@@ -11,6 +12,7 @@ public class playerMovement : MonoBehaviour {
 	public Rigidbody2D rb;
 	//private int goalCount; // number of sparklies the player collects, win when 5 are collected
 	public bool isWASDPlayer;
+	public AudioSource audio;
 
 	// Use this for initialization
 	void Start () {

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor.SceneManagement;
+using UnityEditor.Audio;
 
 public class enemyBehavior : MonoBehaviour {
 
@@ -10,10 +11,12 @@ public class enemyBehavior : MonoBehaviour {
 	public float speedUpgrade;
 	public Animator animationController;
 	bool isCollecting = false;
+	public AudioSource audio;
 
 
 	// Use this for initialization
 	void Start () {
+		audio = this.GetComponent<AudioSource>();
 	}
 	
 	// Update is called once per frame
@@ -33,7 +36,6 @@ public class enemyBehavior : MonoBehaviour {
 		if (Vector3.Distance(transform.position,target.position) > 0.4f){
 			transform.Translate(new Vector3(speed* Time.deltaTime,0,0) );
 		}
-
 	}
 
 	void OnCollisionEnter2D(Collision2D coll) {
@@ -47,6 +49,7 @@ public class enemyBehavior : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D coll) {
 		if (coll.gameObject.tag == "powerup") {
+			audio.Play();
 			isCollecting = true;
 			//animationController.Play ("enemy_transform1");
 			Debug.Log ("enemy got powerup");
