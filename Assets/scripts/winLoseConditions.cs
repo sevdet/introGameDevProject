@@ -8,8 +8,9 @@ public class winLoseConditions : MonoBehaviour {
 	
 	public Rigidbody2D rb;
 	private int goalCount; // number of sparklies the player collects
-	private int goalNum = 5; // number of sparklies necessary for winning
+	public int goalNum = 5; // number of sparklies necessary for winning
 	public AudioSource audio;
+	public float endSceneTime;
 
 
 	// Use this for initialization
@@ -26,7 +27,7 @@ public class winLoseConditions : MonoBehaviour {
 
 		if (goalCount == goalNum) {
 			Debug.Log ("won");
-			SceneManager.LoadScene ("winScene");
+			StartCoroutine(WaitAndLoadScene());
 		}
 
 	}
@@ -49,7 +50,7 @@ public class winLoseConditions : MonoBehaviour {
 
 	IEnumerator WaitAndLoadScene()
 	{
-		yield return new WaitForSeconds(3f);
+		yield return new WaitForSeconds (endSceneTime);
 		SceneManager.LoadScene("winScene");
 	}
 }

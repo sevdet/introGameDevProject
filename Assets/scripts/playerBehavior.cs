@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEditor.Audio;
 
 public class playerBehavior : MonoBehaviour {
 
@@ -13,11 +14,13 @@ public class playerBehavior : MonoBehaviour {
 	private Vector2 startPosition;
 	private int goalCount; // number of sparklies the player collects, win when 5 are collected
 	public Animator animationController;
+	public AudioSource audio;
 
 
 	// Use this for initialization
 	void Start () {
 		
+		audio = GetComponent<AudioSource>();
 		goalCount = 0;
 		startPosition = new Vector2(-8.16f,-4.39f);
 		speed = 3;
@@ -52,6 +55,7 @@ public class playerBehavior : MonoBehaviour {
 		}
 
 		if (coll.gameObject.tag == "goal") {
+			audio.Play();
 			Destroy (coll.gameObject);
 			Debug.Log ("collected a sparkly");
 			goalCount += 1;
