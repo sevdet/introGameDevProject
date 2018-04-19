@@ -19,7 +19,6 @@ public class winLoseConditions : MonoBehaviour {
 		goalCount = 0;
 		audio = this.GetComponent<AudioSource> ();
 		rb = this.GetComponent<Rigidbody2D> ();
-		audio = this.GetComponent<AudioSource> ();
 
 	}
 
@@ -57,4 +56,5 @@ public class winLoseConditions : MonoBehaviour {
 	}
 	// i'm realizing now that i'm only doing this wait when the player wins, but not when they lose
 	// so i need to implement that as well so the loseScene doesn't play so suddenly
+
 }

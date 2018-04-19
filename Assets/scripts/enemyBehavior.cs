@@ -12,11 +12,13 @@ public class enemyBehavior : MonoBehaviour {
 	public Animator animationController; // controlling animation for when enemy picks up a powerup
 	bool isCollecting = false; // using this to tell when the enemy has picked up a powerup so when this is true, it does the animation
 	AudioSource audio; // sound effect for picking up powerup
+	public ParticleSystem particles;
 
 
 	// Use this for initialization
 	void Start () {
 		audio = this.GetComponent<AudioSource>();
+		particles = this.GetComponent<ParticleSystem> ();
 	}
 	
 	// Update is called once per frame
@@ -36,6 +38,15 @@ public class enemyBehavior : MonoBehaviour {
 		if (Vector3.Distance(transform.position,target.position) > 0.4f){
 			transform.Translate(new Vector3(speed* Time.deltaTime,0,0) );
 		}
+
+
+		if (Vector3.Distance (GameObject.FindWithTag ("player").transform.position, 
+			transform.position) < 2.5f) {
+			particles.Play ();
+		} else {
+			particles.Stop ();
+		}
+			
 	}
 
 	void OnCollisionEnter2D(Collision2D coll) {
