@@ -14,6 +14,8 @@ public class playerMovement : MonoBehaviour {
 	bool isCollecting = false;
 	public ParticleSystem particles; // this will come out when player is close to enemy
 
+  
+
 	// Use this for initialization
 	void Start () {
 
@@ -30,17 +32,28 @@ public class playerMovement : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
+<<<<<<< HEAD
 		if (isCollecting) { // if player has just picked up a sparkly
 			animationController.Play ("pickupSparkle"); // play the powering up animation
 		} else { // if player hasn't just picked something up 
 			animationController.Play ("player_idle"); // play its idle animation
 		}
 		
+=======
+        float h = Input.GetAxis("Horizontal") * speed;
+
+      
+
+
+
+
+>>>>>>> master
 		xAxis = Input.GetAxis ("Horizontal"); // handle direction for A/D/left/right key presses
 		yAxis = Input.GetAxis ("Vertical"); // handle direction for W/S/up/down key presses 
 
 		transform.Translate (new Vector2 (xAxis, yAxis) * Time.deltaTime * speed);  // moves player
 
+<<<<<<< HEAD
 		if (Vector3.Distance (GameObject.FindWithTag ("enemy").transform.position, 
 			rb.transform.position) < 2.5f) {
 			particles.Play ();
@@ -55,6 +68,12 @@ public class playerMovement : MonoBehaviour {
 		if (coll.gameObject.tag == "goal") { // if a sparkly is picked up
 			isCollecting = true;
 		}
+=======
+
+
+>>>>>>> master
 	}
-		
+
+	
+
 }
