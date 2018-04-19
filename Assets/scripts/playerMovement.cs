@@ -11,6 +11,8 @@ public class playerMovement : MonoBehaviour {
 	private float yAxis; // move up when 1 move down when -1
 	public Rigidbody2D rb;
 
+  
+
 	// Use this for initialization
 	void Start () {
 
@@ -24,12 +26,23 @@ public class playerMovement : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		
+
+        float h = Input.GetAxis("Horizontal") * speed;
+
+      
+
+
+
+
 		xAxis = Input.GetAxis ("Horizontal"); // handle direction for A/D/left/right key presses
 		yAxis = Input.GetAxis ("Vertical"); // handle direction for W/S/up/down key presses 
 
 		transform.Translate (new Vector2 (xAxis, yAxis) * Time.deltaTime * speed);  // moves player
 
+
+
 	}
-		
+
+	
+
 }
