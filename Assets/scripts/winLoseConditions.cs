@@ -44,7 +44,7 @@ public class winLoseConditions : MonoBehaviour {
 
 		if (coll.gameObject.tag == "enemy") { // if enemy is touched
 			Debug.Log ("lost");
-			SceneManager.LoadScene ("loseScene"); // gameover
+			SceneManager.LoadScene(SceneManager.GetActiveScene().name); // gameover
 		}
 	}
 
