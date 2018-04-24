@@ -14,11 +14,17 @@ public class playerMovement : MonoBehaviour {
 	//bool isCollecting = false;
 	public ParticleSystem particles; // this will come out when player is close to enemy
 
-  
+	// player starts randomly from any of the four positions below
+	static Vector2 startPos1 = new Vector2(-8.36f,-4.38f);
+	static Vector2 startPos2 = new Vector2 (-8.36f, 4.38f);
+	static Vector2 startPos3 = new Vector2(8.53f, -4.38f);
+	static Vector2 startPos4 = new Vector2 (8.4f, 4.38f);
+
+	Vector2[] startPositions = { startPos1, startPos2, startPos3, startPos4 };
+
 
 	// Use this for initialization
 	void Start () {
-
 		//goalCount = 0;
 		speed = 3;
 		animationController = this.GetComponent<Animator> ();
@@ -26,6 +32,10 @@ public class playerMovement : MonoBehaviour {
 		rb.bodyType = RigidbodyType2D.Dynamic; 
 		rb.gravityScale = 0; // want collision but it's topdown so there's no gravity
 		particles = this.GetComponent<ParticleSystem>();
+
+		// handling choosing a random start position for player
+		int randPos = Random.Range(0,4); // choosing random index in startPositions array
+		rb.transform.position = startPositions[randPos];
 
 	}
 
