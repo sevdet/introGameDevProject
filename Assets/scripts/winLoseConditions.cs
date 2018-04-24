@@ -26,7 +26,6 @@ public class winLoseConditions : MonoBehaviour {
 	void Update () {
 
 		if (goalCount == goalNum) { // if goal number of sparklies is reached
-			Debug.Log ("won");
 			StartCoroutine(WaitAndLoadScene()); // wait and play win scene
 		}
 
@@ -38,12 +37,10 @@ public class winLoseConditions : MonoBehaviour {
 		if (coll.gameObject.tag == "goal") { // if a sparkly is picked up
 			audio.Play (); // play the player's pickup sound
 			Destroy (coll.gameObject); // take picked up sparkly out of the game
-			Debug.Log ("collected a sparkly");
 			goalCount += 1; // update the player's goal count
 		}
 
 		if (coll.gameObject.tag == "enemy") { // if enemy is touched
-			Debug.Log ("lost");
 			SceneManager.LoadScene(SceneManager.GetActiveScene().name); // gameover
 		}
 	}

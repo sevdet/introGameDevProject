@@ -22,16 +22,7 @@ public class enemyBehavior : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
-		/*
-		if (isCollecting) { // if enemy has just picked up a powerup
-			animationController.Play ("enemy_transform1"); // play the powering up animation
-		} else { // if enemy hasn't just picked something up 
-			animationController.Play ("enemy_idle"); // play its idle animation
-		}
-		*/
-				
-		//animationController.Play ("enemy_idle"); // play its idle animation
+	void Update () {		
 
 		// rotate enemy to face player
 		transform.LookAt(target.position);
@@ -56,7 +47,6 @@ public class enemyBehavior : MonoBehaviour {
 
 		// if enemy collides with player once then it's gameover 
 		if (coll.gameObject.tag == "player") {
-			Debug.Log ("lost");
 			EditorSceneManager.LoadScene ("loseScene");
 		}
 			
@@ -65,17 +55,9 @@ public class enemyBehavior : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D coll) {
 		if (coll.gameObject.tag == "powerup") {
 			audio.Play(); // play powerup sound
-			//isCollecting = true; // collided with powerup so this is set to true so that the animation plays in Update()
-			animationController.SetTrigger("pickup");
-			Debug.Log ("enemy got powerup");
+			animationController.SetTrigger("pickup"); // play pickup animation once
 			Destroy (coll.gameObject); // the collected powerup is no longer in the game
 			speed += speedUpgrade; // speed increases when powerup collected
-			//transform.localScale = Vector2.Lerp (transform.localScale, new Vector2 (0.8f, 0.8f), Time.deltaTime);
-			/*
-				originally was using the line above this to increase the size of the enemy along with its speed
-				whenever it got a powerup, but once the animation was implemented, the size stopped changing so
-				i need to figure out how to get that to work again or just give up on increasing the enemy's size
-			*/
 		} 
 	}
 		
