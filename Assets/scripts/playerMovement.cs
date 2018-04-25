@@ -21,10 +21,12 @@ public class playerMovement : MonoBehaviour {
 
 	Vector2[] startPositions = { startPos1, startPos2, startPos3, startPos4 };
 
+	public enemyBehavior enemy;
 
 	// Use this for initialization
 	void Start () {
-		//goalCount = 0;
+
+		enemy = GameObject.FindWithTag ("enemy").GetComponent<enemyBehavior> ();
 		speed = 3;
 		animationController = this.GetComponent<Animator> ();
 		rb = this.GetComponent<Rigidbody2D> ();
@@ -59,6 +61,10 @@ public class playerMovement : MonoBehaviour {
 
 		if (coll.gameObject.tag == "goal") { // if a sparkly is picked up
 			animationController.SetTrigger("pickup"); // play pickup animation once
+			speed += 0.2f; // reward player by speeding them up a bit whenever they collect goal
+			if (enemy.speed - 0.04f >= 0.4f){ // checking so that enemy speed never gets lower than its base speed
+				enemy.speed -= 0.04f; // another reward is to make the enemy a tiny bit slower
+			}
 		}
 
 
