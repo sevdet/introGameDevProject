@@ -6,7 +6,7 @@ to switch between scenes, need to find a different way so that it can build and 
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor.SceneManagement;
+using UnityEngine.SceneManagement;
 
 public class sceneChanger : MonoBehaviour {
 
@@ -17,28 +17,28 @@ public class sceneChanger : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (EditorSceneManager.GetActiveScene ().name == "loseScene") {
+		if (SceneManager.GetActiveScene ().name == "loseScene") {
 			if (Input.anyKeyDown) {
-				EditorSceneManager.LoadScene ("titleScene");
+				SceneManager.LoadScene ("titleScene");
 			}
 		}
 
-		if (EditorSceneManager.GetActiveScene ().name == "winScene") {
+		if (SceneManager.GetActiveScene ().name == "winScene") {
 			if (Input.anyKeyDown) {
-				EditorSceneManager.LoadScene ("maze2");
+				SceneManager.LoadScene ("maze2");
 			}
 		}
 
-		if (EditorSceneManager.GetActiveScene ().name == "titleScene") {
+		if (SceneManager.GetActiveScene ().name == "titleScene") {
 			if (Input.anyKeyDown) {
-				EditorSceneManager.LoadScene ("maze1");
+				SceneManager.LoadScene ("maze1");
 			}
 		}
 
-		if (EditorSceneManager.GetActiveScene ().name == "maze1" || EditorSceneManager.GetActiveScene().name == "maze2" 
-			|| EditorSceneManager.GetActiveScene().name == "maze4") {
+		if (SceneManager.GetActiveScene ().name == "maze1" || SceneManager.GetActiveScene().name == "maze2" 
+			|| SceneManager.GetActiveScene().name == "maze3") {
 			if (Input.GetKeyDown (KeyCode.Space)) {
-				EditorSceneManager.LoadScene (EditorSceneManager.GetActiveScene ().name);
+				SceneManager.LoadScene (SceneManager.GetActiveScene ().name);
 			}
 		}
 	}

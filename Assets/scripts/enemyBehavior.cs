@@ -1,8 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor.SceneManagement;
-using UnityEditor.Audio;
+using UnityEngine.SceneManagement;
+using UnityEngine.Audio;
 
 public class enemyBehavior : MonoBehaviour {
 
@@ -47,7 +47,7 @@ public class enemyBehavior : MonoBehaviour {
 
 		// if enemy collides with player once then it's gameover 
 		if (coll.gameObject.tag == "player") {
-			EditorSceneManager.LoadScene ("loseScene");
+			SceneManager.LoadScene ("loseScene");
 		}
 			
 	}

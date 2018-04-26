@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEditor.Audio;
+using UnityEngine.Audio;
 
 public class playerMovement : MonoBehaviour {
 
