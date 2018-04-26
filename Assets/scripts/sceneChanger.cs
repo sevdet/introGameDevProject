@@ -35,7 +35,8 @@ public class sceneChanger : MonoBehaviour {
 			}
 		}
 
-		if (EditorSceneManager.GetActiveScene ().name == "maze1" || EditorSceneManager.GetActiveScene().name == "maze2") {
+		if (EditorSceneManager.GetActiveScene ().name == "maze1" || EditorSceneManager.GetActiveScene().name == "maze2" 
+			|| EditorSceneManager.GetActiveScene().name == "maze4") {
 			if (Input.GetKeyDown (KeyCode.Space)) {
 				EditorSceneManager.LoadScene (EditorSceneManager.GetActiveScene ().name);
 			}
